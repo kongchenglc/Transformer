@@ -3,9 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 import random
-import math
 from models.transformer import Transformer
-from models.positional_encoding import PositionalEncoding
 
 # Hyperparameters
 D_MODEL = 128  # Reduced model dimension for faster training
