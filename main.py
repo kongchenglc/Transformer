@@ -2,16 +2,16 @@ from application.translator import Translator
 
 # Training data
 train_data = [
-    ("你好", "hello"),
-    ("早上好", "good morning"),
-    ("再见", "goodbye"),
-    ("谢谢", "thank you"),
-    ("不客气", "you're welcome"),
-    ("你叫什么名字", "what's your name"),
-    ("今天天气如何", "how's the weather today"),
-    ("我喜欢编程", "I love programming"),
-    ("这是一个测试", "this is a test"),
-    ("人工智能", "artificial intelligence"),
+    ("bonjour", "hello"),
+    ("bon matin", "good morning"),
+    ("au revoir", "goodbye"),
+    ("merci", "thank you"),
+    ("de rien", "you're welcome"),
+    ("comment vous appelez-vous", "what's your name"),
+    ("quel temps fait-il aujourd'hui", "how's the weather today"),
+    ("j'aime programmer", "I love programming"),
+    ("c'est un test", "this is a test"),
+    ("intelligence artificielle", "artificial intelligence"),
 ]
 
 # Initialize translator
@@ -32,6 +32,6 @@ translator.train()
 
 # Test translations
 print("\nTranslation examples:")
-print("你好 →", translator.translate("你好"))
-print("早上好 →", translator.translate("早上好"))
-print("这是一个测试 →", translator.translate("这是一个测试"))
+print("bonjour →", translator.translate("bonjour"))
+print("bon matin →", translator.translate("bon matin"))
+print("c'est un test →", translator.translate("c'est un test"))
