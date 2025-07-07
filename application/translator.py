@@ -1,4 +1,3 @@
-
 # translator.py
 import torch
 import torch.nn as nn
@@ -57,17 +56,17 @@ class Translator:
         self.src_vocab = {"<pad>": 0, "<sos>": 1, "<eos>": 2}
         self.trg_vocab = {"<pad>": 0, "<sos>": 1, "<eos>": 2}
 
-        for ch, en in self.train_data:
-            for char in ch:
-                if char not in self.src_vocab:
-                    self.src_vocab[char] = len(self.src_vocab)
+        for fr, en in self.train_data:
+            for word in fr.split():
+                if word not in self.src_vocab:
+                    self.src_vocab[word] = len(self.src_vocab)
             for word in en.split():
                 if word not in self.trg_vocab:
                     self.trg_vocab[word] = len(self.trg_vocab)
 
     def _encode(self, sentence, vocab, is_src=True):
         """Convert sentence to token indices with padding"""
-        tokens = list(sentence) if is_src else sentence.split()
+        tokens = sentence.split() if is_src else sentence.split()
         encoded = [1] + [vocab[t] for t in tokens] + [2]
         
         # Handle padding/truncation
@@ -81,10 +80,10 @@ class Translator:
         """Generate encoded dataset"""
         return [
             (
-                self._encode(ch, self.src_vocab),
+                self._encode(fr, self.src_vocab),
                 self._encode(en, self.trg_vocab, False)
             )
-            for ch, en in self.train_data
+            for fr, en in self.train_data
         ]
 
     def _create_mask(self, src, tgt):
